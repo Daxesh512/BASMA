@@ -1,0 +1,394 @@
+//
+//    public function cloudinary()
+//    {
+//
+//
+//        try {
+//            $apiKey = config('cloudinary.api_key');
+//            $apiSecret = config('cloudinary.api_secret');
+//
+//            $client = new Client();
+//            $response = $client->post("https://api.cloudinary.com/v1_1/ARWA/generate_auth_token", [
+//                'form_params' => [
+//                    'api_key' => $apiKey,
+//                    'api_secret' => $apiSecret,
+//                    'expires_at' => now()->addHours(1)->timestamp, // تحديد صلاحية التوكن
+//                    'allowed_formats' => ['jpg', 'jpeg', 'png', 'gif'], // الأذونات المسموح بها للتوكن
+//                    // يمكنك إضافة المزيد من الخيارات هنا
+//                ]
+//            ]);
+//
+//            // التحقق من صحة الاستجابة
+//            if (!empty($response)) {
+//                // قراءة جسم الاستجابة كنص
+//                $token = $response->getBody()->getContents();
+//
+//                return response()->json(['token' => $token]);
+//            } else {
+//                return response()->json(['error' => 'Failed to get token'], 500);
+//            }
+//        } catch (\Exception $e) {
+//            return response()->json(['error' => $e->getMessage()], 500);
+//        }
+//
+//
+//    }
+//
+////    public function uploadImage(Request $request)
+////    {
+////        try {
+////
+////            $image = $request->file('image');
+////            $uploadedFileUrl = Cloudinary::uploadFile($request->file('image')->getRealPath())->getSecurePath();
+////
+////            return response()->json(['token' => $uploadedFileUrl]);
+////        } catch (\Exception $e) {
+////            return response()->json(['error' => $e->getMessage()], 500);
+////        }
+////
+////
+////    }
+//
+//    public function createAccessToken()
+//    {
+//
+//        $folderId = 'c78761149b09548abd7ee4d7201cf19736';
+//        $folderAcl = "*/folders/$folderId/*";
+//        $authToken = new AuthToken([
+//            'key' => '952944418364724',
+//            'duration' => 100,
+//            'acl' => $folderAcl
+//        ]);
+//
+//        $token = $authToken->generate();
+//        return response()->json(['token' => $token]);
+//    }
+//
+//
+//
+//    public function uploadImageUsingToken1(Request $request)
+//    {
+//        $image = $request->file('image');
+//
+//        // الحصول على التوكن
+//        $token = $this->createAccessToken();
+//
+//        // رفع الصورة إلى Cloudinary باستخدام التوكن
+//        $response = Http::attach(
+//            'file', file_get_contents($image), $image->getClientOriginalName()
+//        )->post('https://api.cloudinary.com/v1_1/dftvov92g/image/upload', [
+//            'upload_preset' => 'ml_default',
+//            'folder' => 'arwa2',
+//            'upload_token' => $token,
+//        ]);
+//
+//        // يمكنك تنفيذ أي إجراءات إضافية هنا، مثل حفظ معرّف الصورة في قاعدة البيانات
+//
+//        // إرجاع رد الاستجابة بمعلومات الصورة المرفوعة
+//
+//        // إرجاع رابط الصورة المرفوعة
+//        return response()->json(['image_url' => $response]);
+//    }
+//
+//
+
+
+
+}
+
+//
+//CLOUDINARY_CLOUD_NAME=dftvov92g
+//CLOUDINARY_API_KEY=952944418364724
+//CLOUDINARY_API_SECRET=6H2jlDuaNl8ZP-g0oyJWRcB71BU
+//CLOUDINARY_URL=cloudinary://952944418364724:6H2jlDuaNl8ZP-g0oyJWRcB71BU@dftvov92g
+
+
+//        try {
+//            Configuration::instance([
+//                'cloud' => [
+//                    'cloud_name' => config('services.cloudinary.cloud_name'),
+//                    'api_key' => config('services.cloudinary.api_key'),
+//                    'api_secret' => config('services.cloudinary.api_secret')
+//                ]
+//            ]);
+
+
+composer require cloudinary-labs/cloudinary-laravel
+اضافة بملف ال config app
+php artisan vendor:publish --provider="CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider"
+ php artisan config:cache
+ php artisan config:clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function uploadSignature(Request $request)
+    {
+        // Generate timestamp
+        $timestamp = time();
+
+        // Upload parameters
+        $params = [
+            'timestamp' => $timestamp,
+            'upload_preset' => 'ml_default',
+        ];
+
+        $signature = $this->generateSignature($params);
+        $params['signature'] = $signature;
+        $file = $request->file('image');
+        $result = Cloudinary::uploadApi()->upload($file->getRealPath(), $params); // Pass the real path of the file
+
+        return response()->json($signature);
+    }
+
+
+
+    public function uploadToCloudinary(Request $request)
+    {
+        $timestamp = time();
+        $params = [
+            'timestamp' => $timestamp,
+            'upload_preset' => 'ml_default',
+        ];
+
+        $signature = $this->generateSignature($params);
+        $params['signature'] = $signature;
+
+
+        // بناء البيانات لرفع الصورة إلى Cloudinary
+        $data = [
+            'file' => $request->file('file'),
+            'api_key' => config('cloudinary.api_key'),
+            'signature' => $signature,
+            'timestamp' => time(),
+        ];
+
+        // إرسال البيانات إلى Cloudinary
+        $cloudinaryResponse = Http::withHeaders([
+            'Content-Type' => 'multipart/form-data',
+        ])->post("https://api.cloudinary.com/v1_1/dftvov92g/auto/upload", $data);
+// تحقق من نجاح الطلب
+        if ($cloudinaryResponse->successful()) {
+            // استخراج رابط الصورة من الاستجابة
+            $imageUrl = $cloudinaryResponse['secure_url']; // يمكن استخدام 'url' بدلاً من 'secure_url' حسب الحاجة
+
+            // إعادة رابط الصورة كجزء من الرد إلى المستخدم
+            return response()->json(['image_url' => $imageUrl]);
+        } else {
+
+            // في حالة عدم نجاح الطلب، يمكنك التعامل مع الخطأ هنا
+            return response()->json(['error' => 'Failed to upload image'], 500);
+        }
+//        // إرسال معلومات الصورة إلى الخادم الخاص بك
+//        $photoData = [
+//            'public_id' => $cloudinaryResponse['public_id'],
+//            'version' => $cloudinaryResponse['version'],
+//            'signature' => $signature,
+//        ];
+
+//        // إرسال معلومات الصورة إلى الخادم الخاص بك لاتخاذ إجراءات إضافية
+//        Http::post("/do-something-with-photo", $photoData);
+
+        // إرجاع الرد إلى المستخدم أو أي عملية إضافية
+
+    }
+
+    public function generateSignature()
+    {
+        $params = [
+
+            'upload_preset' => 'ml_default',
+        ];
+        // تحديد المفتاح السري من Cloudinary
+        $apiSecret = config('cloudinary.api_secret');
+
+        // بناء البيانات التي سيتم تضمينها في التوقيع
+        $payload = new \CloudinaryLabs\CloudinaryLaravel\Payload\Payload($params);
+
+        // تحويل البيانات إلى سلسلة نصية JSON
+        $payloadString = json_encode($payload);
+
+        // حساب التوقيع باستخدام السر السري
+        $signature = \CloudinaryLabs\CloudinaryLaravel\Signature\HashGenerator::fromString($payloadString, $apiSecret);
+
+
+
+//        $stringToSign = http_build_query($params) .config('cloudinary.api_secret');
+//
+//        $signature = hash('sha256', $stringToSign);
+//
+        return $signature;
+    }
+
+
+
+
+    public function uploadImage(Request $request)
+    {
+        // استلام التوقيع الرقمي والمعلومات الأخرى من المشروع الآخر
+        $signature = $this->getSignature();
+        $cloudinary_cloud_name = 'dftvov92g';
+        $cloudinary_api_key = '952944418364724';
+
+        //CLOUDINARY_CLOUD_NAME=dftvov92g
+        //CLOUDINARY_API_KEY=952944418364724
+        $image = $request->file('image');
+
+        // إعداد البيانات لرفع الصورة
+        $data = [
+            'file' => $image,
+            'folder' => 'arwa', // المجلد المحدد في حساب Cloudinary
+            'api_key' => $cloudinary_api_key,
+            'signature' => $signature
+        ];
+
+        // إجراء طلب الرفع إلى Cloudinary
+        $response = Cloudinary::uploadApi()->upload($data);
+
+        // إرجاع رد الاستجابة من Cloudinary
+        return response()->json($response);
+    }
+
+
+        public function getSignature(Request $request)
+    {
+        $timestamp = time();
+
+        // المعلمات التي تحتاج إلى توقيعها
+        $params_to_sign = [
+            'timestamp' => $timestamp,
+        ];
+
+        // تحويل المعلمات إلى سلسلة نصية مفصولة بـ '&'
+        $data_to_sign = http_build_query($params_to_sign);
+
+        // المفتاح السري من التكوين
+        $api_secret = config('cloudinary.api_secret');
+
+        // توليد التوقيع باستخدام hash_hmac
+        $signature = hash_hmac('sha256', urldecode($data_to_sign), $api_secret);
+
+        // إرجاع الطابع الزمني والتوقيع كاستجابة JSON
+        return response()->json(['timestamp' => $timestamp, 'signature' => $signature]);
+    }
+
+
+
+    public function data()
+    {
+
+       $CLOUDINARY_CLOUD_NAME = config('cloudinary.cloud_name');
+        return response()->json($CLOUDINARY_CLOUD_NAME);
+    }
+
+
+    public function uploadImage1(Request $request)
+    {
+        try {
+
+            $image = $request->file('image');
+            $uploadedFileUrl = Cloudinary::uploadFile($request->file('image')->getRealPath())->getSecurePath();
+
+            return response()->json(['image' => $uploadedFileUrl]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+
+    }
+
+
+    public function getSignature1()
+    {
+        $timestamp = time();
+
+        $params_to_sign = [
+            'timestamp' => $timestamp,
+            'upload_preset' => env('CLOUDINARY_UPLOAD_PRESET'), // إعداد مسبق للرفع
+        ];
+
+        $api_secret = config('cloudinary.api_secret');
+
+        // تحويل المعلمات إلى سلسلة نصية مفصولة بـ '&'
+        $data_to_sign = urldecode(http_build_query($params_to_sign));
+
+        // توليد التوقيع باستخدام hash_hmac
+        $signature = hash_hmac('sha256', $data_to_sign, $api_secret);
+
+        return response()->json([
+            'timestamp' => $timestamp,
+            'signature' => $signature,
+            'api_key' => config('cloudinary.api_key'),
+            'upload_preset' => env('CLOUDINARY_UPLOAD_PRESET')
+        ]);
+    }
+
+    public function uploadToCloudinary1(Request $request)
+    {
+        if (!$request->hasFile('image')) {
+            return response()->json(['error' => 'No file uploaded'], 400);
+        }
+
+        $file = $request->file('image');
+
+        $signatureResponse = $this->getSignature1();
+        $signatureData = $signatureResponse->getData();
+
+        // عرض البيانات الموقعة للتأكد من صحتها
+        \Log::info('Signature Data', (array) $signatureData);
+
+        $data = [
+            'file' => $request->file('image'),
+            'api_key' => $signatureData->api_key,
+            'timestamp' => $signatureData->timestamp,
+            'signature' => $signatureData->signature,
+            'upload_preset' => $signatureData->upload_preset,
+        ];
+
+
+        \Log::info('Data Sent to Cloudinary', $data);
+
+        $cloudinaryResponse = Http::asMultipart()->post("https://api.cloudinary.com/v1_1/".config('cloudinary.cloud_name')."/image/upload", $data);
+
+        if ($cloudinaryResponse->successful()) {
+            $imageUrl = $cloudinaryResponse->json()['secure_url'];
+            return response()->json(['image_url' => $imageUrl]);
+        } else {
+            $errorResponse = $cloudinaryResponse->json();
+            \Log::error('Cloudinary upload failed', $errorResponse);
+            return response()->json(['error' => 'Failed to upload image','$signatureResponse'=>$signatureResponse, 'details' => $errorResponse], 500);
+        }
+    }
+    

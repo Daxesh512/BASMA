@@ -1,0 +1,130 @@
+<mxfile host="Electron" modified="2024-03-16T20:44:16.589Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="4QahVe0BAMjd7gUtdzSH" version="23.1.5" type="device">
+  <diagram name="Page-1" id="vzSNqRNOB5DlJZzxStPZ">
+    <mxGraphModel dx="2343" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-1" value="الطفل" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="10" width="200" height="930" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-4" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;shadow=1;fillColor=#206ea8;rotation=-180;direction=south;strokeColor=#206EA8;" parent="d5xAtTW5DuqZihnq1Bqy-1" vertex="1">
+          <mxGeometry x="79.19" y="60" width="41.62" height="36.9" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-8" value="اختيار نشر منشور" style="html=1;whiteSpace=wrap;" parent="d5xAtTW5DuqZihnq1Bqy-1" vertex="1">
+          <mxGeometry x="45" y="150" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-7" value="" style="endArrow=open;endFill=1;endSize=12;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="d5xAtTW5DuqZihnq1Bqy-1" source="d5xAtTW5DuqZihnq1Bqy-4" target="d5xAtTW5DuqZihnq1Bqy-8" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="380" y="150" as="sourcePoint" />
+            <mxPoint x="100" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="d5xAtTW5DuqZihnq1Bqy-1" source="d5xAtTW5DuqZihnq1Bqy-33" target="d5xAtTW5DuqZihnq1Bqy-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-33" value="يظهر المنشور بين منشورات الطفل" style="html=1;whiteSpace=wrap;" parent="d5xAtTW5DuqZihnq1Bqy-1" vertex="1">
+          <mxGeometry x="30" y="515" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-1" value="كتابة المنشور وتأكيد النشر" style="html=1;whiteSpace=wrap;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-1">
+          <mxGeometry x="45" y="230" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-2" value="" style="endArrow=open;endFill=1;endSize=12;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="d5xAtTW5DuqZihnq1Bqy-1" source="d5xAtTW5DuqZihnq1Bqy-8" target="--cNPf1HnAgo9_ZaAELp-1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="165" y="185" as="sourcePoint" />
+            <mxPoint x="255" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-6" value="" style="shape=mxgraph.bpmn.shape;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;outline=end;symbol=terminate;shadow=1;strokeColor=#206ea8;fillColor=#FFFFFF;" parent="d5xAtTW5DuqZihnq1Bqy-1" vertex="1">
+          <mxGeometry x="60" y="630" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-2" value="النظام" style="swimlane;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="260" y="10" width="230" height="930" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-9" value="يرسل النظام المنشور للادمن" style="html=1;whiteSpace=wrap;" parent="d5xAtTW5DuqZihnq1Bqy-2" vertex="1">
+          <mxGeometry x="40" y="290" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-12" value="يحفظ النظام المنشور لعرضه في تطبيقي الطفل والمتبرع" style="html=1;whiteSpace=wrap;" parent="d5xAtTW5DuqZihnq1Bqy-2" vertex="1">
+          <mxGeometry x="40" y="430" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-3" value="الآدمن/الموظف" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="10" width="200" height="930" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="d5xAtTW5DuqZihnq1Bqy-3" source="--cNPf1HnAgo9_ZaAELp-6" target="--cNPf1HnAgo9_ZaAELp-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-6" value="يفحص الادمن المنشور لقبوله او رفضه&amp;nbsp;" style="html=1;whiteSpace=wrap;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-3">
+          <mxGeometry x="60" y="280" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="d5xAtTW5DuqZihnq1Bqy-3" source="--cNPf1HnAgo9_ZaAELp-8" target="--cNPf1HnAgo9_ZaAELp-33">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-8" value="" style="html=1;whiteSpace=wrap;aspect=fixed;shape=isoRectangle;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-3">
+          <mxGeometry x="66.25" y="389.5" width="67.5" height="40.5" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-28" value="لا" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="d5xAtTW5DuqZihnq1Bqy-3" vertex="1">
+          <mxGeometry x="90" y="440" width="50" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-32" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;نعم&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-3">
+          <mxGeometry x="40" y="380" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="d5xAtTW5DuqZihnq1Bqy-3" source="--cNPf1HnAgo9_ZaAELp-33" target="--cNPf1HnAgo9_ZaAELp-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-33" value="يحذف النظام المنشور&amp;nbsp;" style="html=1;whiteSpace=wrap;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-3">
+          <mxGeometry x="60" y="500" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-39" value="" style="shape=mxgraph.bpmn.shape;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;outline=end;symbol=terminate;shadow=1;strokeColor=#206ea8;fillColor=#FFFFFF;" vertex="1" parent="d5xAtTW5DuqZihnq1Bqy-3">
+          <mxGeometry x="100" y="600" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d5xAtTW5DuqZihnq1Bqy-32" value="" style="endArrow=open;endFill=1;endSize=12;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="d5xAtTW5DuqZihnq1Bqy-12" target="d5xAtTW5DuqZihnq1Bqy-33" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="310" y="530" as="sourcePoint" />
+            <mxPoint x="200" y="353" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="355" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-3" value="" style="endArrow=open;endFill=1;endSize=12;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="--cNPf1HnAgo9_ZaAELp-1" target="d5xAtTW5DuqZihnq1Bqy-9">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="230" y="265" as="sourcePoint" />
+            <mxPoint x="305" y="264.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="d5xAtTW5DuqZihnq1Bqy-9" target="--cNPf1HnAgo9_ZaAELp-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="--cNPf1HnAgo9_ZaAELp-8" target="d5xAtTW5DuqZihnq1Bqy-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-13" value="المتبرع" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="10" width="200" height="930" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-30" value="يظهر المنشور بين منشورات الطفل لدى المتبرع" style="html=1;whiteSpace=wrap;" vertex="1" parent="--cNPf1HnAgo9_ZaAELp-13">
+          <mxGeometry x="45" y="370" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="d5xAtTW5DuqZihnq1Bqy-12" target="--cNPf1HnAgo9_ZaAELp-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="440" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="--cNPf1HnAgo9_ZaAELp-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="--cNPf1HnAgo9_ZaAELp-30" target="d5xAtTW5DuqZihnq1Bqy-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="650" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-35" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

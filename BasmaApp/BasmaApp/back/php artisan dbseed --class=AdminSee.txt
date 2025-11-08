@@ -1,0 +1,73 @@
+php artisan db:seed --class=AdminSeeder
+php artisan db:seed --class=CategorySeeder
+php artisan db:seed --class=ClassroomSeeder
+php artisan db:seed --class=SubjectSeeder
+php artisan db:seed --class=SubjectClassSeeder
+php artisan db:seed --class=TitleSeeder
+
+ssh -p 65002 u191071770@154.56.32.70
+cd/......في هون شي 
+
+chmod -R 755 /home/u191071770/domains/basma.icu/public_html
+chmod -R 775 /home/u191071770/domains/basma.icu/public_html/storage
+chmod -R 775 /home/u191071770/domains/basma.icu/public_html/bootstrap/cache
+
+
+# <IfModule mod_rewrite.c>
+#     <IfModule mod_negotiation.c>
+#         Options -MultiViews -Indexes
+#     </IfModule>
+
+#     RewriteEngine On
+
+#     # Handle Authorization Header
+#     RewriteCond %{HTTP:Authorization} .
+#     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+#     # Redirect Trailing Slashes If Not A Folder...
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteCond %{REQUEST_URI} (.+)/$
+#     RewriteRule ^ %1 [L,R=301]
+
+#     # Send Requests To Front Controller...
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteRule ^ index.php [L]
+# </IfModule>
+
+
+'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('basma');
+});
+
+Route::get('/donate', function () {
+    return view('donate');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
